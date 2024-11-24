@@ -1,0 +1,18 @@
+[package]
+name = "jmtdd"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7.9", features = ["json", "tokio"] }
+color-eyre = "0.6.3"
+futures = "0.3.31"
+hyper = { version = "1.5.1", features = ["full", "server"] }
+parking_lot = "0.12.3"
+reqwest = "0.12.9"
+serde = { version = "1.0.215", features = ["derive"] }
+thiserror = "2.0.3"
+tokio = { version = "1.41.1", features = ["full"] }
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+tracing-test = "0.2.5"
