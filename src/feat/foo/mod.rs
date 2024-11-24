@@ -58,9 +58,9 @@ impl Foo for StubFoo {
 }
 
 /// A fake Foo that allows you to return a specific value.
-#[derive(Debug)]
+#[derive(Debug, Default)]
 pub struct FakeFoo {
-    value: i32,
+    pub value: i32,
 }
 
 impl FakeFoo {

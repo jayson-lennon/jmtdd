@@ -132,7 +132,7 @@ impl WebApplicationExt for Application {
 }
 
 #[cfg(test)]
-mod tests {
+pub mod tests {
     use crate::{
         feat::web::{ServerConfig, WebApplicationBuilderExt, WebApplicationExt},
         Application,
@@ -160,6 +160,10 @@ mod tests {
 
     impl TestClient {
         /// Make a GET request.
+        ///
+        /// # Errors
+        ///
+        /// Returns an error if there was a problem making the request
         pub async fn get<U>(&self, url: U) -> Result<Response, reqwest::Error>
         where
             U: Into<String>,
