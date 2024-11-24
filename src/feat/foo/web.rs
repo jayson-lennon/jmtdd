@@ -1,8 +1,8 @@
-use axum::{extract::State, routing::get, Router};
-
-use crate::{feat::FeatureRouter, Application};
+//! Web integratino for the Foo feature
 
 use super::Foo;
+use crate::{feat::FeatureRouter, Application};
+use axum::{extract::State, routing::get, Router};
 
 /// Implement the same route for all Foos
 impl<F> FeatureRouter for F
@@ -14,8 +14,8 @@ where
     }
 }
 
-/// Handler has full application access. It should be minimal (just returning the `foo` value
-/// as a String, in this case).
+/// Handler should be responsible for transforming incoming and outgoing data. Logic should be
+/// delegated to the feature itself.
 async fn handler(State(app): State<Application>) -> String {
     let foo = app.foo.run_foo();
     format!("{foo}")

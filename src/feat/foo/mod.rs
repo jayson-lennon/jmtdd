@@ -10,6 +10,7 @@ use std::sync::Arc;
 ///
 /// We use a trait here so that we can create test versions.
 pub trait Foo: FeatureRouter + 'static + Send + Sync + std::fmt::Debug {
+    /// This runs the actual business logic that we want.
     fn run_foo(&self) -> i32;
 }
 
@@ -36,7 +37,7 @@ impl FooApplicationBuilderExt for ApplicationBuilder {
     where
         F: Foo,
     {
-        // We just switch out the config with whatever was provided.
+        // We just switch out the feature with whatever was provided.
         Self {
             feature: Some(Arc::new(feature)),
             ..self
